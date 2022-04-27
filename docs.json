@@ -23,6 +23,10 @@
                 [
                     "How to run CocoaPods on Apple Silicon (M1)",
                     "/faq/how-to-run-cocoapods-apple-silicon"
+                ],
+                [
+                    "How to recreate the starter project from scratch",
+                    "/faq/how-to-recreate-starter-project"
                 ]
             ]
         ],
