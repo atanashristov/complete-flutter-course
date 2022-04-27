@@ -31,6 +31,10 @@
                 [
                     "How to recreate the starter project from scratch",
                     "/faq/how-to-recreate-starter-project"
+                ],
+                [
+                    "Using the Bash or Zsh shell terminal on Windows",
+                    "/faq/using-bash-zsh-on-windows"
                 ]
             ]
         ],
