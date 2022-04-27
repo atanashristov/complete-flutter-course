@@ -29,6 +29,10 @@
                     "/faq/adb-exited-code-1-streamed-install"
                 ],
                 [
+                    "Enable macOS/Linux desktop support",
+                    "/faq/enable-macos-desktop-support"
+                ],
+                [
                     "How to recreate the starter project from scratch",
                     "/faq/how-to-recreate-starter-project"
                 ],
