@@ -25,6 +25,10 @@
                     "/faq/how-to-run-cocoapods-apple-silicon"
                 ],
                 [
+                    "Error: ADB exited with exit code 1 Performing Streamed Install",
+                    "/faq/adb-exited-code-1-streamed-install"
+                ],
+                [
                     "How to recreate the starter project from scratch",
                     "/faq/how-to-recreate-starter-project"
                 ]
@@ -85,7 +89,7 @@
                     "Simplified Flutter Localization using a BuildContext extension",
                     "https://codewithandrea.com/articles/flutter-localization-build-context-extension/"
                 ]                
-        ]
+            ]
         ],
         [
             "Flutter Web Demo",
