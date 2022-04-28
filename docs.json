@@ -25,8 +25,8 @@
                     "/faq/how-to-run-cocoapods-apple-silicon"
                 ],
                 [
-                    "Error: ADB exited with exit code 1 Performing Streamed Install",
-                    "/faq/adb-exited-code-1-streamed-install"
+                    "Error: ADB exited with exit code 1 - Requested internal only, but not enough space",
+                    "/faq/adb-exited-code-1-not-enough-space"
                 ],
                 [
                     "Enable macOS/Linux desktop support",
