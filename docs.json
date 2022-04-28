@@ -39,6 +39,10 @@
                 [
                     "Using the Bash or Zsh shell terminal on Windows",
                     "/faq/using-bash-zsh-on-windows"
+                ],
+                [
+                    "How to deal with localization (multiple `arb` files) with the feature-first approach",
+                    "/faq/localization-feature-first"
                 ]
             ]
         ],
