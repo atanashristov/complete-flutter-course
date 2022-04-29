@@ -81,24 +81,25 @@ This project includes a documentation website that can be found here:
 
 1. Section intro
 2. Implementing a fake authentication repository
-3. Intro: a reactive in-memory store with RxDart
-4. Implementing the `InMemoryStore` with RxDart
-5. Using the `InMemoryStore` in the `FakeAuthRepository`
-6. Accessing the `FakeAuthRepository` with `ref.read()` in the `AccountScreen`
-7. Creating our first controller using `StateNotifier`
-8. Using the `StateNotifier` inside the `AccountScreen` widget
-9. Listening to provider state changes with `ref.listen()`
-10. Bug-fix for `Navigator.pop`
-11. The `AsyncValue.guard` method
-12. Adding an `AsyncValue` extension method
-13. Using the `authStateChangesProvider` in `HomeAppBar`
-14. Intro to the email & password sign-in screen
-15. How to generate immutable state classes in Dart
-16. Using `AsyncValue` inside `EmailPasswordSignInState`
-17. Implementing the `EmailPasswordSignInController`
-18. Using the `EmailPasswordSignInController` in the widget class
-19. GoRouter redirects
-20. GoRouter: the `refreshListenable` argument
-21. Wrap Up
+3. Creating repositories using abstract classes (optional)
+4. Intro: a reactive in-memory store with RxDart
+5. Implementing the `InMemoryStore` with RxDart
+6. Using the `InMemoryStore` in the `FakeAuthRepository`
+7. Accessing the `FakeAuthRepository` with `ref.read()` in the `AccountScreen`
+8. Creating our first controller using `StateNotifier`
+9. Using the `StateNotifier` inside the `AccountScreen` widget
+10. Listening to provider state changes with `ref.listen()`
+11. Bug-fix for `Navigator.pop`
+12. The `AsyncValue.guard` method
+13. Adding an `AsyncValue` extension method
+14. Using the `authStateChangesProvider` in `HomeAppBar`
+15. Intro to the email & password sign-in screen
+16. How to generate immutable state classes in Dart
+17. Using `AsyncValue` inside `EmailPasswordSignInState`
+18. Implementing the `EmailPasswordSignInController`
+19. Using the `EmailPasswordSignInController` in the widget class
+20. GoRouter redirects
+21. GoRouter: the `refreshListenable` argument
+22. Wrap Up
 
 ### [LICENSE: MIT](LICENSE.md)
