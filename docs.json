@@ -6,12 +6,8 @@
             "/index"
         ],
         [
-            "FAQ",
+            "FAQ (iOS & macOS)",
             [
-                [
-                    "Android build.gradle issues",
-                    "/faq/android-build-gradle-issues"
-                ],
                 [
                     "CocoaPods not installed. Skipping pod install",
                     "/faq/cocoapods-not-installed"
@@ -21,17 +17,35 @@
                     "/faq/sandbox-not-in-sync-podfile"
                 ],
                 [
+                    "CocoaPods did not set the base configuration of your project because your project already has a custom config set",
+                    "/faq/cocoapods-did-not-set-base-configuration"
+                ],
+                [
                     "How to run CocoaPods on Apple Silicon (M1)",
                     "/faq/how-to-run-cocoapods-apple-silicon"
                 ],
                 [
-                    "Error: ADB exited with exit code 1 - Requested internal only, but not enough space",
-                    "/faq/adb-exited-code-1-not-enough-space"
-                ],
-                [
                     "Enable macOS/Linux desktop support",
                     "/faq/enable-macos-desktop-support"
+                ]
+            ]
+        ],
+        [
+            "FAQ (Android)",
+            [
+                [
+                    "Android build.gradle issues",
+                    "/faq/android-build-gradle-issues"
                 ],
+                [
+                    "Error: ADB exited with exit code 1 - Requested internal only, but not enough space",
+                    "/faq/adb-exited-code-1-not-enough-space"
+                ]
+            ]
+        ],
+        [
+            "FAQ (Other)",
+            [
                 [
                     "How to recreate the starter project from scratch",
                     "/faq/how-to-recreate-starter-project"
