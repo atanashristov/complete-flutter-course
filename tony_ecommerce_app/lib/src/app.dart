@@ -1,3 +1,4 @@
+import 'package:go_router/go_router.dart';
 import 'package:tony_ecommerce_app/src/features/products_list/products_list_screen.dart';
 import 'package:tony_ecommerce_app/src/localization/string_hardcoded.dart';
 import 'package:flutter/material.dart';
@@ -7,11 +8,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    final goRouter = GoRouter(
+      initialLocation: '/', // This is by default, but we also may configure whatever we want.
+      debugLogDiagnostics: true, // All navigation events will be logged to log console.
+      routes: [
+        GoRoute(
+          path: '/',
+          builder: (context, state) => const ProductsListScreen(),
+        ),
+      ],
+    );
+    return MaterialApp.router(
+      routerDelegate: goRouter.routerDelegate,
+      routeInformationParser: goRouter.routeInformationParser,
       debugShowCheckedModeBanner: false,
       restorationScopeId: 'app',
-      // * The home page of the app
-      home: const ProductsListScreen(),
       onGenerateTitle: (BuildContext context) => 'My Shop'.hardcoded,
       theme: ThemeData(
         primarySwatch: Colors.grey,
