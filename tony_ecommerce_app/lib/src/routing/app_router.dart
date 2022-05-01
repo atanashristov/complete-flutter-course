@@ -7,16 +7,26 @@ import 'package:tony_ecommerce_app/src/features/shopping_cart/shopping_cart_scre
 import 'package:tony_ecommerce_app/src/features/sign_in/email_password_sign_in_screen.dart';
 import 'package:tony_ecommerce_app/src/features/sign_in/email_password_sign_in_state.dart';
 
+enum AppRoute {
+  home,
+  cart,
+  orders,
+  account,
+  signIn,
+}
+
 final goRouter = GoRouter(
   initialLocation: '/', // This is by default, but we also may configure whatever we want.
   debugLogDiagnostics: true, // All navigation events will be logged to log console.
   routes: [
     GoRoute(
       path: '/',
+      name: AppRoute.home.name,
       builder: (context, state) => const ProductsListScreen(),
       routes: [
         GoRoute(
           path: 'cart',
+          name: AppRoute.cart.name,
           pageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,
             fullscreenDialog: true, // Controls the animation from the bottom instead from the right side.
@@ -25,6 +35,7 @@ final goRouter = GoRouter(
         ),
         GoRoute(
           path: 'orders',
+          name: AppRoute.orders.name,
           pageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,
             fullscreenDialog: true, // Controls the animation from the bottom instead from the right side.
@@ -33,6 +44,7 @@ final goRouter = GoRouter(
         ),
         GoRoute(
           path: 'account',
+          name: AppRoute.account.name,
           pageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,
             fullscreenDialog: true, // Controls the animation from the bottom instead from the right side.
@@ -41,6 +53,7 @@ final goRouter = GoRouter(
         ),
         GoRoute(
           path: 'signIn',
+          name: AppRoute.signIn.name,
           pageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,
             fullscreenDialog: true, // Controls the animation from the bottom instead from the right side.

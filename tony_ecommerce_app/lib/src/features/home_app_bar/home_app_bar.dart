@@ -6,6 +6,7 @@ import 'package:tony_ecommerce_app/src/common_widgets/action_text_button.dart';
 import 'package:tony_ecommerce_app/src/features/home_app_bar/more_menu_button.dart';
 import 'package:tony_ecommerce_app/src/features/home_app_bar/shopping_cart_icon.dart';
 import 'package:tony_ecommerce_app/src/models/app_user.dart';
+import 'package:tony_ecommerce_app/src/routing/app_router.dart';
 
 /// Custom [AppBar] widget that is reused by the [ProductsListScreen] and
 /// [ProductScreen].
@@ -45,18 +46,18 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
             ActionTextButton(
               key: MoreMenuButton.ordersKey,
               text: 'Orders'.hardcoded,
-              onPressed: () => context.go('/orders'),
+              onPressed: () => context.goNamed(AppRoute.orders.name),
             ),
             ActionTextButton(
               key: MoreMenuButton.accountKey,
               text: 'Account'.hardcoded,
-              onPressed: () => context.go('/account'),
+              onPressed: () => context.goNamed(AppRoute.account.name),
             ),
           ] else
             ActionTextButton(
               key: MoreMenuButton.signInKey,
               text: 'Sign In'.hardcoded,
-              onPressed: () => context.go('/signIn'),
+              onPressed: () => context.goNamed(AppRoute.signIn.name),
             )
         ],
       );
