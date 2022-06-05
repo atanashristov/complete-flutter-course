@@ -89,11 +89,11 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.atanashristov" "\0"
+            VALUE "CompanyName", "atanashristov.com" "\0"
             VALUE "FileDescription", "tony_ecommerce_app" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "tony_ecommerce_app" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2022 com.atanashristov. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2022 atanashristov.com. All rights reserved." "\0"
             VALUE "OriginalFilename", "tony_ecommerce_app.exe" "\0"
             VALUE "ProductName", "tony_ecommerce_app" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"

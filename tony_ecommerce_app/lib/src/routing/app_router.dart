@@ -1,15 +1,15 @@
+import 'package:tony_ecommerce_app/src/features/authentication/presentation/account/account_screen.dart';
+import 'package:tony_ecommerce_app/src/features/authentication/presentation/sign_in/email_password_sign_in_screen.dart';
+import 'package:tony_ecommerce_app/src/features/authentication/presentation/sign_in/email_password_sign_in_state.dart';
+import 'package:tony_ecommerce_app/src/features/cart/presentation/shopping_cart/shopping_cart_screen.dart';
+import 'package:tony_ecommerce_app/src/features/checkout/presentation/checkout_screen/checkout_screen.dart';
+import 'package:tony_ecommerce_app/src/features/orders/presentation/orders_list/orders_list_screen.dart';
+import 'package:tony_ecommerce_app/src/features/products/presentation/product_screen/product_screen.dart';
+import 'package:tony_ecommerce_app/src/features/products/presentation/products_list/products_list_screen.dart';
+import 'package:tony_ecommerce_app/src/features/reviews/presentation/leave_review_screen/leave_review_screen.dart';
+import 'package:tony_ecommerce_app/src/routing/not_found_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tony_ecommerce_app/src/features/account/account_screen.dart';
-import 'package:tony_ecommerce_app/src/features/checkout/checkout_screen.dart';
-import 'package:tony_ecommerce_app/src/features/leave_review_page/leave_review_screen.dart';
-import 'package:tony_ecommerce_app/src/features/not_found/not_found_screen.dart';
-import 'package:tony_ecommerce_app/src/features/orders_list/orders_list_screen.dart';
-import 'package:tony_ecommerce_app/src/features/product_page/product_screen.dart';
-import 'package:tony_ecommerce_app/src/features/products_list/products_list_screen.dart';
-import 'package:tony_ecommerce_app/src/features/shopping_cart/shopping_cart_screen.dart';
-import 'package:tony_ecommerce_app/src/features/sign_in/email_password_sign_in_screen.dart';
-import 'package:tony_ecommerce_app/src/features/sign_in/email_password_sign_in_state.dart';
 
 enum AppRoute {
   home,
@@ -23,8 +23,8 @@ enum AppRoute {
 }
 
 final goRouter = GoRouter(
-  initialLocation: '/', // This is by default, but we also may configure whatever we want.
-  debugLogDiagnostics: true, // All navigation events will be logged to log console.
+  initialLocation: '/',
+  debugLogDiagnostics: false,
   routes: [
     GoRoute(
       path: '/',
@@ -46,7 +46,7 @@ final goRouter = GoRouter(
                 final productId = state.params['id']!;
                 return MaterialPage(
                   key: state.pageKey,
-                  fullscreenDialog: true, // Controls the animation from the bottom instead from the right side.
+                  fullscreenDialog: true,
                   child: LeaveReviewScreen(productId: productId),
                 );
               },
@@ -58,7 +58,7 @@ final goRouter = GoRouter(
           name: AppRoute.cart.name,
           pageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,
-            fullscreenDialog: true, // Controls the animation from the bottom instead from the right side.
+            fullscreenDialog: true,
             child: const ShoppingCartScreen(),
           ),
           routes: [
@@ -67,7 +67,7 @@ final goRouter = GoRouter(
               name: AppRoute.checkout.name,
               pageBuilder: (context, state) => MaterialPage(
                 key: state.pageKey,
-                fullscreenDialog: true, // Controls the animation from the bottom instead from the right side.
+                fullscreenDialog: true,
                 child: const CheckoutScreen(),
               ),
             ),
@@ -78,7 +78,7 @@ final goRouter = GoRouter(
           name: AppRoute.orders.name,
           pageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,
-            fullscreenDialog: true, // Controls the animation from the bottom instead from the right side.
+            fullscreenDialog: true,
             child: const OrdersListScreen(),
           ),
         ),
@@ -87,16 +87,16 @@ final goRouter = GoRouter(
           name: AppRoute.account.name,
           pageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,
-            fullscreenDialog: true, // Controls the animation from the bottom instead from the right side.
+            fullscreenDialog: true,
             child: const AccountScreen(),
           ),
         ),
         GoRoute(
-          path: 'sign_in',
+          path: 'signIn',
           name: AppRoute.signIn.name,
           pageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,
-            fullscreenDialog: true, // Controls the animation from the bottom instead from the right side.
+            fullscreenDialog: true,
             child: const EmailPasswordSignInScreen(
               formType: EmailPasswordSignInFormType.signIn,
             ),
