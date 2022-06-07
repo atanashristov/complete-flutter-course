@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:tony_ecommerce_app/src/common_widgets/alert_dialogs.dart';
-import 'package:tony_ecommerce_app/src/constants/test_products.dart';
+import 'package:tony_ecommerce_app/src/features/products/data/fake_products_repository.dart';
 import 'package:tony_ecommerce_app/src/localization/string_hardcoded.dart';
 import 'package:flutter/material.dart';
 import 'package:tony_ecommerce_app/src/common_widgets/custom_image.dart';
@@ -31,7 +31,7 @@ class ShoppingCartItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: Read from data source
-    final product = kTestProducts.firstWhere((product) => product.id == item.productId);
+    final product = FakeProductsRepository.instance.getProductById(item.productId)!;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: Sizes.p8),
       child: Card(
