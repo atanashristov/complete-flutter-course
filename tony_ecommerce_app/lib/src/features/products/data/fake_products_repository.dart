@@ -14,11 +14,15 @@ class FakeProductsRepository {
   }
 
   Future<List<Product>> fetchProductsList() async {
+    await Future.delayed(const Duration(seconds: 2));
+    // throw Exception('Failed to fetch products');
     return Future.value(_products);
   }
 
-  Stream<List<Product>> watchProductsList() {
-    return Stream.value(_products);
+  Stream<List<Product>> watchProductsList() async* {
+    await Future.delayed(const Duration(seconds: 2));
+    // throw Exception('Failed to fetch products');
+    yield _products;
   }
 
   Stream<Product?> watchProduct(String id) {
@@ -28,4 +32,14 @@ class FakeProductsRepository {
 
 final productsRepositoryProvider = Provider<FakeProductsRepository>((ref) {
   return FakeProductsRepository();
+});
+
+final productsListStreamProvider = StreamProvider<List<Product>>((ref) {
+  final productsRepository = ref.watch(productsRepositoryProvider);
+  return productsRepository.watchProductsList();
+});
+
+final productsListFutureProvider = FutureProvider<List<Product>>((ref) {
+  final productsRepository = ref.watch(productsRepositoryProvider);
+  return productsRepository.fetchProductsList();
 });
