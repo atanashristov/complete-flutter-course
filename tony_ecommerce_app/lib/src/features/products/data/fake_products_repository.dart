@@ -14,7 +14,7 @@ class FakeProductsRepository {
   }
 
   Future<List<Product>> fetchProductsList() async {
-    await Future.delayed(const Duration(seconds: 2));
+    // await Future.delayed(const Duration(seconds: 2));
     // throw Exception('Failed to fetch products');
     return Future.value(_products);
   }
