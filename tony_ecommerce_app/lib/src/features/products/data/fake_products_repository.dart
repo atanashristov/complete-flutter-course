@@ -40,11 +40,16 @@ final productsListFutureProvider = FutureProvider<List<Product>>((ref) {
 });
 
 final productsListStreamProvider = StreamProvider<List<Product>>((ref) {
+  // debugPrint('created productsListStreamProvider');
   final productsRepository = ref.watch(productsRepositoryProvider);
   return productsRepository.watchProductsList();
 });
 
-final productStreamProvider = StreamProvider.family<Product?, String>((ref, id) {
+final productStreamProvider = StreamProvider.autoDispose.family<Product?, String>((ref, id) {
+  // debugPrint('created productStreamProvider with id=$id');
+  // ref.onDispose(() {
+  //   debugPrint('disposed productStreamProvider with id=$id');
+  // });
   final productsRepository = ref.watch(productsRepositoryProvider);
   return productsRepository.watchProduct(id);
 });
