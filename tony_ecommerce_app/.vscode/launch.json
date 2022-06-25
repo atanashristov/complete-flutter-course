@@ -7,7 +7,11 @@
     {
       "name": "tony_ecommerce_app",
       "request": "launch",
-      "type": "dart"
+      "type": "dart",
+      "toolArgs": [
+        "--dart-define",
+        "USE_FAKE_REPOS=true"
+      ]
     },
     {
       "name": "tony_ecommerce_app (profile mode)",
