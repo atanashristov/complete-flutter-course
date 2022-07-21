@@ -8,7 +8,11 @@ final authRepositoryProvider = Provider<AuthRepository>((ref) {
   // This can be set at run time via --dart-define=USE_FAKE_REPOS=true.
   // flutter run --dart-define USE_FAKE_REPOS="true"
   const useFakeRepos = String.fromEnvironment('USE_FAKE_REPOS', defaultValue: 'false') == 'true';
-  return useFakeRepos ? FakeAuthRepository() : FirebaseAuthRepository();
+  final authRepo = useFakeRepos ? FakeAuthRepository() : FirebaseAuthRepository();
+  ref.onDispose(() {
+    authRepo.dispose();
+  });
+  return authRepo;
 });
 
 final authStateChangesProvider = StreamProvider.autoDispose<AppUser?>((ref) {

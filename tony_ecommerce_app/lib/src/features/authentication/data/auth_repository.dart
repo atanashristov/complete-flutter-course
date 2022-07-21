@@ -10,4 +10,6 @@ abstract class AuthRepository {
   Future<void> createUserWithEmailAndPassword(String email, String password);
 
   Future<void> signOut();
+
+  void dispose();
 }

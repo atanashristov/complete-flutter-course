@@ -26,4 +26,9 @@ class FirebaseAuthRepository implements AuthRepository {
   Future<void> signOut() async {
     throw UnimplementedError();
   }
+
+  @override
+  void dispose() {
+    throw UnimplementedError();
+  }
 }

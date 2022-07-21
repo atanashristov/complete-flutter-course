@@ -14,3 +14,61 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## Repositories
+
+### Abstract class and implementations
+
+For the _authentication_ feature we create abstract repository `AuthRepository` and 2 implementations: `FakeAuthRepository` and `FirebaseAuthRepository`. Then we define the auth Riverpod providers and we select the one or the other repository using environment variable 'USE_FAKE_REPOS':
+
+```dart
+// features/authentication/data/auth_providers.dart
+
+final authRepositoryProvider = Provider<AuthRepository>((ref) {
+  // This can be set at run time via --dart-define=USE_FAKE_REPOS=true.
+  // flutter run --dart-define USE_FAKE_REPOS="true"
+  const useFakeRepos = String.fromEnvironment('USE_FAKE_REPOS', defaultValue: 'false') == 'true';
+  return useFakeRepos ? FakeAuthRepository() : FirebaseAuthRepository();
+});
+
+final authStateChangesProvider = StreamProvider.autoDispose<AppUser?>((ref) {
+  final authRepository = ref.watch(authRepositoryProvider);
+  return authRepository.authStateChanges;
+});
+```
+
+We can set environment variables at compile time with the `--dart-define` command line argument like `--dart-define=USE_FAKE_REPOS=true`.
+
+We can set this environment variable in the `.vscode/launch.json` like so:
+
+```json
+  "configurations": [
+    {
+      "name": "tony_ecommerce_app",
+      "request": "launch",
+      "type": "dart",
+      "toolArgs": [
+        "--dart-define",
+        "USE_FAKE_REPOS=true"
+      ]
+    },
+```
+
+### Hold in-memory state
+
+For fake repositories we just want to keep state in-memory. The state will reset upon hot restart, but this is fine.
+
+The repository provides state changes to listeners as a stream `authStateChangesProvider`.
+We have several options to implement _reactive in-memory store_ for our state. For this we have several options.
+
+One option is to use the `StreamController` from the `dart:async` package. We have two requirements:
+
+- Support multiple listeners
+  - We can use `SteamController.broadcast()`
+- We have to _remember the last value_
+  - We should be able to return it when a new widget was created and added as a listener
+  - This is _not supported_ by `StreamControler` class.
+
+A better option is to use [BehaviourSubject](https://pub.dev/documentation/rxdart/latest/rx/BehaviorSubject-class.html) class from the [RxDart package](https://pub.dev/packages/rxdart). It comes out of the box with support for remembering the last value and multiple listeners.
+
+We create in-memory store for all the repositories in `utils/in_memory_store.dart`.
