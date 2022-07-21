@@ -95,6 +95,7 @@ Inside the `build()` method we can get access to values from the providers in tw
 
 - use `ref.watch()` when you want to rebuild the widget when data changes
 - use `ref.read()` inside button callbacks, when you do not need rebuild
+- use `ref.listen()` to listen and run when state changed without rebuilding the widget
 
 ### Controllers
 
@@ -112,3 +113,5 @@ Controllers with Riverpod are based on `StateNotifier` from Riverpod. These are 
 
 - ValueNotifier/ChangeNotifier from Flutter SDK
 - Cubit from BloC package
+
+Controllers should never depend on `BuildContext`.
