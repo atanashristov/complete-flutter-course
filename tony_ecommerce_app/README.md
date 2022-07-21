@@ -72,3 +72,43 @@ One option is to use the `StreamController` from the `dart:async` package. We ha
 A better option is to use [BehaviourSubject](https://pub.dev/documentation/rxdart/latest/rx/BehaviorSubject-class.html) class from the [RxDart package](https://pub.dev/packages/rxdart). It comes out of the box with support for remembering the last value and multiple listeners.
 
 We create in-memory store for all the repositories in `utils/in_memory_store.dart`.
+
+## UI
+
+### ConsumerWidget
+
+`ConsumerWidget` provides a reference to `WidgetRef` that allows interaction with the providers:
+
+```dart
+class AccountScreen extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    ...
+          ActionTextButton(
+            onPressed: () async {
+              ...
+                await ref.read(authRepositoryProvider).signOut();
+                Navigator.of(context).pop();
+```
+
+Inside the `build()` method we can get access to values from the providers in two ways:
+
+- use `ref.watch()` when you want to rebuild the widget when data changes
+- use `ref.read()` inside button callbacks, when you do not need rebuild
+
+### Controllers
+
+Controllers purpose is to:
+
+- Manage widgets state
+- Mediate between the widget and other layers
+
+Controllers are similar to:
+
+- View models in MVVM architecture
+- Blocs in BloC architecture
+
+Controllers with Riverpod are based on `StateNotifier` from Riverpod. These are similar to:
+
+- ValueNotifier/ChangeNotifier from Flutter SDK
+- Cubit from BloC package
