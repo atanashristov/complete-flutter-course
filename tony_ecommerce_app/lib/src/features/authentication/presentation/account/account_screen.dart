@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:tony_ecommerce_app/src/common_widgets/action_text_button.dart';
 import 'package:tony_ecommerce_app/src/common_widgets/responsive_center.dart';
 import 'package:tony_ecommerce_app/src/constants/app_sizes.dart';
+import 'package:tony_ecommerce_app/src/utils/async_value_ui.dart';
 
 /// Simple account screen showing some user info and a logout button.
 class AccountScreen extends ConsumerWidget {
@@ -14,28 +15,7 @@ class AccountScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<AsyncValue<void>>(accountScreenControllerProvider, (previousState, state) {
-      // Check state.isRefreshing, otherwise we get the previous state.hasError, that may be `true`.
-      if (!state.isRefreshing && state.hasError) {
-        showExceptionAlertDialog(
-          context: context,
-          title: 'Error'.hardcoded,
-          exception: state.error,
-        );
-        // Another option is to use a snackbar.
-        // ScaffoldMessenger.of(context).showSnackBar(
-        //   SnackBar(
-        //     content: Text(state.error.toString()),
-        //     action: SnackBarAction(
-        //       label: 'OK'.hardcoded,
-        //       onPressed: () {
-        //         ScaffoldMessenger.of(context).hideCurrentSnackBar();
-        //       },
-        //     ),
-        //   ),
-        // );
-      }
-    });
+    ref.listen<AsyncValue>(accountScreenControllerProvider, (_, state) => state.showAlertDialogOnError(context));
 
     final state = ref.watch(accountScreenControllerProvider);
     return Scaffold(

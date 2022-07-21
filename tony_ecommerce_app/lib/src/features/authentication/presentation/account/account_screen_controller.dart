@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tony_ecommerce_app/src/features/authentication/data/auth_providers.dart';
 import 'package:tony_ecommerce_app/src/features/authentication/data/auth_repository.dart';
 
-class AccountScreenController extends StateNotifier<AsyncValue<void>> {
+class AccountScreenController extends StateNotifier<AsyncValue> {
   final AuthRepository authRepository;
 
   AccountScreenController({
@@ -26,8 +26,7 @@ class AccountScreenController extends StateNotifier<AsyncValue<void>> {
   }
 }
 
-final accountScreenControllerProvider =
-    StateNotifierProvider.autoDispose<AccountScreenController, AsyncValue<void>>((ref) {
+final accountScreenControllerProvider = StateNotifierProvider.autoDispose<AccountScreenController, AsyncValue>((ref) {
   final authRepository = ref.read(authRepositoryProvider);
   return AccountScreenController(authRepository: authRepository);
 });
