@@ -14,6 +14,7 @@ class FakeAuthRepository implements AuthRepository {
   @override
   Future<void> signInWithEmailAndPassword(String email, String password) async {
     await Future.delayed(const Duration(seconds: 1));
+    // throw Exception('Connection failed');
     if (currentUser == null) {
       _createUser(email);
     }
@@ -38,6 +39,7 @@ class FakeAuthRepository implements AuthRepository {
   void dispose() => _authState.close();
 
   void _createUser(String email) {
+    // throw Exception('Connection failed');
     _authState.value = AppUser(
       uid: email.split('').reversed.join(),
       email: email,

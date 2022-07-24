@@ -3,11 +3,11 @@ import 'package:tony_ecommerce_app/src/features/authentication/data/auth_provide
 import 'package:tony_ecommerce_app/src/features/authentication/data/auth_repository.dart';
 
 class AccountScreenController extends StateNotifier<AsyncValue> {
-  final AuthRepository authRepository;
-
   AccountScreenController({
     required this.authRepository,
   }) : super(const AsyncValue.data(null));
+
+  final AuthRepository authRepository;
 
   Future<bool> signOut() async {
     // try {
