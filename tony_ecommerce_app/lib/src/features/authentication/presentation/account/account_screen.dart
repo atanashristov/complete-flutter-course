@@ -34,10 +34,12 @@ class AccountScreen extends ConsumerWidget {
                       defaultActionText: 'Logout'.hardcoded,
                     );
                     if (logout == true) {
-                      final success = await ref.read(accountScreenControllerProvider.notifier).signOut();
-                      if (success) {
-                        Navigator.of(context).pop();
-                      }
+                      ref.read(accountScreenControllerProvider.notifier).signOut();
+                      // No need to pop, as we utilize the `GoRouter.refreshListenable'.
+                      // final success = await ref.read(accountScreenControllerProvider.notifier).signOut();
+                      // if (success) {
+                      //   Navigator.of(context).pop();
+                      // }
                     }
                   },
           ),
