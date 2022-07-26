@@ -9,4 +9,17 @@ class Purchase {
   });
   final OrderID orderId;
   final DateTime orderDate;
+
+  @override
+  String toString() => 'Purchase(orderId: $orderId, orderDate: $orderDate)';
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is Purchase && other.orderId == orderId && other.orderDate == orderDate;
+  }
+
+  @override
+  int get hashCode => orderId.hashCode ^ orderDate.hashCode;
 }

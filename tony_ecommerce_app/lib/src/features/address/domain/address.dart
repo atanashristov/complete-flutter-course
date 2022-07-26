@@ -13,4 +13,26 @@ class Address {
   final String state;
   final String postalCode;
   final String country;
+
+  @override
+  String toString() {
+    return 'Address(address: $address, city: $city, state: $state, postalCode: $postalCode, country: $country)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is Address &&
+        other.address == address &&
+        other.city == city &&
+        other.state == state &&
+        other.postalCode == postalCode &&
+        other.country == country;
+  }
+
+  @override
+  int get hashCode {
+    return address.hashCode ^ city.hashCode ^ state.hashCode ^ postalCode.hashCode ^ country.hashCode;
+  }
 }

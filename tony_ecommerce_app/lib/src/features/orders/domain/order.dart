@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'package:tony_ecommerce_app/src/localization/string_hardcoded.dart';
 
 /// Order status
@@ -38,4 +40,27 @@ class Order {
   final OrderStatus orderStatus;
   final DateTime orderDate;
   final double total;
+
+  @override
+  String toString() {
+    return 'Order(id: $id, userId: $userId, items: $items, orderStatus: $orderStatus, orderDate: $orderDate, total: $total)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is Order &&
+        other.id == id &&
+        other.userId == userId &&
+        mapEquals(other.items, items) &&
+        other.orderStatus == orderStatus &&
+        other.orderDate == orderDate &&
+        other.total == total;
+  }
+
+  @override
+  int get hashCode {
+    return id.hashCode ^ userId.hashCode ^ items.hashCode ^ orderStatus.hashCode ^ orderDate.hashCode ^ total.hashCode;
+  }
 }
