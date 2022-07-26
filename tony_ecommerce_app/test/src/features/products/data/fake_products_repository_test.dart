@@ -19,13 +19,21 @@ void main() {
     );
   });
 
-  test('getProductById(-1) throws StateError', () {
+  // test('getProductById(-1) throws StateError', () {
+  //   final productsRepository = FakeProductsRepository();
+  //   expect(
+  //     // wrap in closure to evaluate at runtime
+  //     () => productsRepository.getProductById('-1'),
+  //     // use matcher to verify it throws StateError
+  //     throwsStateError,
+  //   );
+  // });
+
+  test('getProductById(-1) returns null', () {
     final productsRepository = FakeProductsRepository();
     expect(
-      // wrap in closure to evaluate at runtime
-      () => productsRepository.getProductById('-1'),
-      // use matcher to verify it throws StateError
-      throwsStateError,
+      productsRepository.getProductById('-1'),
+      null,
     );
   });
 }
