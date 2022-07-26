@@ -3,9 +3,10 @@ import 'package:tony_ecommerce_app/src/constants/test_products.dart';
 import 'package:tony_ecommerce_app/src/features/products/data/fake_products_repository.dart';
 
 void main() {
+  FakeProductsRepository makeProductsRepository() => FakeProductsRepository(addDelay: false);
   group('FakeProductsRepository', () {
     test('getProductsList returns global list of products', () {
-      final productsRepository = FakeProductsRepository();
+      final productsRepository = makeProductsRepository();
       expect(
         productsRepository.getProductsList(),
         kTestProducts,
@@ -13,7 +14,7 @@ void main() {
     });
 
     test('getProductById(1) returns first item', () {
-      final productsRepository = FakeProductsRepository();
+      final productsRepository = makeProductsRepository();
       expect(
         productsRepository.getProductById('1'),
         kTestProducts[0],
@@ -21,7 +22,7 @@ void main() {
     });
 
     // test('getProductById(-1) throws StateError', () {
-    //   final productsRepository = FakeProductsRepository();
+    //   final productsRepository = makeProductsRepository();
     //   expect(
     //     // wrap in closure to evaluate at runtime
     //     () => productsRepository.getProductById('-1'),
@@ -31,7 +32,7 @@ void main() {
     // });
 
     test('getProductById(-1) returns null', () {
-      final productsRepository = FakeProductsRepository();
+      final productsRepository = makeProductsRepository();
       expect(
         productsRepository.getProductById('-1'),
         null,
@@ -40,7 +41,7 @@ void main() {
 
     // Use async/await to test Future results
     test('fetchProductsList returns global list of products', () async {
-      final productsRepository = FakeProductsRepository();
+      final productsRepository = makeProductsRepository();
       expect(
         await productsRepository.fetchProductsList(),
         kTestProducts,
@@ -49,7 +50,7 @@ void main() {
 
     // Use emit* matchers test Stream results
     test('watchProductsList emits global list of products', () {
-      final productsRepository = FakeProductsRepository();
+      final productsRepository = makeProductsRepository();
       expect(
         productsRepository.watchProductsList(),
         emits(kTestProducts),
@@ -57,7 +58,7 @@ void main() {
     });
 
     test('watchProduct(1) emits first item', () {
-      final productsRepository = FakeProductsRepository();
+      final productsRepository = makeProductsRepository();
       expect(
         productsRepository.watchProduct('1'),
         emits(kTestProducts[0]),
@@ -65,7 +66,7 @@ void main() {
     });
 
     test('watchProduct(-1) emits null', () {
-      final productsRepository = FakeProductsRepository();
+      final productsRepository = makeProductsRepository();
       expect(
         productsRepository.watchProduct('-1'),
         emits(null),

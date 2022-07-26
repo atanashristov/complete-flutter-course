@@ -1,8 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tony_ecommerce_app/src/constants/test_products.dart';
 import 'package:tony_ecommerce_app/src/features/products/domain/product.dart';
+import 'package:tony_ecommerce_app/src/utils/delay.dart';
 
 class FakeProductsRepository {
+  FakeProductsRepository({this.addDelay = true});
+
+  final bool addDelay;
   final List<Product> _products = kTestProducts;
 
   List<Product> getProductsList() {
@@ -12,13 +16,13 @@ class FakeProductsRepository {
   Product? getProductById(String id) => _getProduct(_products, id);
 
   Future<List<Product>> fetchProductsList() async {
-    // await Future.delayed(const Duration(seconds: 2));
+    await delay(addDelay);
     // throw Exception('Failed to fetch products');
     return Future.value(_products);
   }
 
   Stream<List<Product>> watchProductsList() async* {
-    await Future.delayed(const Duration(seconds: 2));
+    await delay(addDelay);
     //throw Exception('Failed to fetch products');
     yield _products;
   }
