@@ -4,6 +4,7 @@ import 'package:tony_ecommerce_app/src/features/products/data/fake_products_repo
 
 void main() {
   FakeProductsRepository makeProductsRepository() => FakeProductsRepository(addDelay: false);
+
   group('FakeProductsRepository', () {
     test('getProductsList returns global list of products', () {
       final productsRepository = makeProductsRepository();
